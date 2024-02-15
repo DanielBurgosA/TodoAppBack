@@ -10,7 +10,7 @@ Sigue estos pasos para configurar y ejecutar el backend de la aplicación:
 
 Clona este repositorio en tu máquina local utilizando Git:
 
-git clone https://github.com/DanielBurgosA/TodoAppBack.git
+git clone https://github.com/DanielBurgosA/TodoApp.git
 
 ### Configurar la Base de Datos
 
