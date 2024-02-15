@@ -1,0 +1,33 @@
+# Visual Studio Code
+.vscode/
+
+# Visual Studio built-in directory
+obj/
+
+# .NET Core
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.user
+*.vscode
+*.dotnet
+*.cache
+*.log
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Rider
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nuget.props
+*.nuget.targets
