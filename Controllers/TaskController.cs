@@ -39,7 +39,7 @@ namespace To_Do_List_Back.Controllers
             }
 
             var tasks = await _context.Task
-                                        .Where(task => task.TodoListId == listId)
+                                        .Where(task => task.ListId == listId)
                                         .ToListAsync();
 
             return Ok(tasks);
@@ -63,7 +63,7 @@ namespace To_Do_List_Back.Controllers
             {
                 Title = request.Task.Title,
                 Completed = false,
-                TodoListId = request.ListId
+                ListId = request.ListId
             };
 
             _context.Task.Add(newTask);
@@ -109,7 +109,7 @@ namespace To_Do_List_Back.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTask(int id)
+        public async Task<IActionResult> DeleteTask(long id)
         {
             if (id <= 0)
             {

@@ -11,6 +11,6 @@ namespace To_Do_List_Back.Models
             Completed = false;
         }
 
-        public long TodoListId { get; set; }
+        public long ListId { get; set; }
     }
 }

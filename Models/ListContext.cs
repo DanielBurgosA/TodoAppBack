@@ -9,7 +9,7 @@ namespace To_Do_List_Back.Models
         {
         }
 
-        public DbSet<TodoList> List { get; set; }
+        public DbSet<List> List { get; set; }
         public DbSet<TodoTask> Task { get; set; }
         public DbSet<User> User { get; set; }
     }

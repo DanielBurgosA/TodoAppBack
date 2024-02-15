@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace To_Do_List_Back.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitalMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,23 +52,23 @@ namespace To_Do_List_Back.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Completed = table.Column<bool>(type: "bit", nullable: false),
-                    TodoListId = table.Column<long>(type: "bigint", nullable: false)
+                    ListId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Task", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Task_List_TodoListId",
-                        column: x => x.TodoListId,
+                        name: "FK_Task_List_ListId",
+                        column: x => x.ListId,
                         principalTable: "List",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Task_TodoListId",
+                name: "IX_Task_ListId",
                 table: "Task",
-                column: "TodoListId");
+                column: "ListId");
         }
 
         /// <inheritdoc />

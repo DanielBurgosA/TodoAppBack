@@ -1,6 +1,6 @@
 namespace To_Do_List_Back.Models
 {
-    public class TodoList
+    public class List
     {
         public long Id { get; set; }
         public string Name { get; set; }
@@ -8,7 +8,7 @@ namespace To_Do_List_Back.Models
         public long UserId { get; set; } 
         public List<TodoTask>? Tasks { get; set; }
 
-        public TodoList()
+        public List()
         {
             Tasks = new List<TodoTask>();
         }

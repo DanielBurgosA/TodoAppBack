@@ -33,7 +33,7 @@ namespace To_Do_List_Back.Controllers
         }
 
         [HttpGet("{userId}")]
-        public async Task<ActionResult<IEnumerable<TodoList>>> GetTodoLists(long userId)
+        public async Task<ActionResult<IEnumerable<List>>> GetTodoLists(long userId)
         {
             if (userId <= 0)
             {
@@ -59,7 +59,7 @@ namespace To_Do_List_Back.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<TodoList>> CreateTodoList([FromBody] TodoListRequest request)
+        public async Task<ActionResult<List>> CreateTodoList([FromBody] TodoListRequest request)
         {
             if (request == null || request.UserID <= 0 || request.TodoList == null)
             {
@@ -72,7 +72,7 @@ namespace To_Do_List_Back.Controllers
                 return BadRequest("User not found.");
             }
 
-            var newList = new TodoList
+            var newList = new List
             {
                 Name = request.TodoList.Name,
                 Color = request.TodoList.Color,
@@ -122,7 +122,7 @@ namespace To_Do_List_Back.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTodoList(int id)
+        public async Task<IActionResult> DeleteTodoList(long id)
         {
             if (id <= 0)
             {

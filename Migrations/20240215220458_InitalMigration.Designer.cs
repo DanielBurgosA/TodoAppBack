@@ -12,8 +12,8 @@ using To_Do_List_Back.Models;
 namespace To_Do_List_Back.Migrations
 {
     [DbContext(typeof(ListContext))]
-    [Migration("20240215204900_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20240215220458_InitalMigration")]
+    partial class InitalMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace To_Do_List_Back.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("To_Do_List_Back.Models.TodoList", b =>
+            modelBuilder.Entity("To_Do_List_Back.Models.List", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -60,15 +60,15 @@ namespace To_Do_List_Back.Migrations
                     b.Property<bool>("Completed")
                         .HasColumnType("bit");
 
+                    b.Property<long>("ListId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("TodoListId")
-                        .HasColumnType("bigint");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("TodoListId");
+                    b.HasIndex("ListId");
 
                     b.ToTable("Task");
                 });
@@ -111,14 +111,14 @@ namespace To_Do_List_Back.Migrations
 
             modelBuilder.Entity("To_Do_List_Back.Models.TodoTask", b =>
                 {
-                    b.HasOne("To_Do_List_Back.Models.TodoList", null)
+                    b.HasOne("To_Do_List_Back.Models.List", null)
                         .WithMany("Tasks")
-                        .HasForeignKey("TodoListId")
+                        .HasForeignKey("ListId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("To_Do_List_Back.Models.TodoList", b =>
+            modelBuilder.Entity("To_Do_List_Back.Models.List", b =>
                 {
                     b.Navigation("Tasks");
                 });
