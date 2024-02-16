@@ -35,8 +35,7 @@ namespace To_Do_List_Back.Controllers
             if (string.IsNullOrEmpty(request.FirstName) ||
                 string.IsNullOrEmpty(request.LastName) ||
                 string.IsNullOrEmpty(request.Email) ||
-                string.IsNullOrEmpty(request.PasswordHash) ||
-                request.DateOfBirth == default)
+                string.IsNullOrEmpty(request.PasswordHash))
             {
                 return BadRequest("All fields are required.");
             }
@@ -61,7 +60,9 @@ namespace To_Do_List_Back.Controllers
             _context.User.Add(newUser);
             await _context.SaveChangesAsync();
 
-            return Ok(newUser);
+            string token = CreateToken(newUser);
+
+            return Ok(token);
         }
 
         [HttpPost("login")]
