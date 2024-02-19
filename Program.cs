@@ -36,6 +36,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseJwtMiddleware();
+
 app.UseAuthorization();
 
 app.MapControllers();
